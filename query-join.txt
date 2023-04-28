@@ -1,0 +1,8 @@
+1)
+SELECT `students`.`name`, `students`.`surname`, `degrees`.`name` AS `nome_corso`
+FROM `students`
+INNER JOIN `degrees`
+ON `students`.`degree_id` = `degrees`.`id`
+WHERE `degrees`.`name` = 'Corso di Laurea in Economia';
+
+2)
