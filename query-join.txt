@@ -58,3 +58,12 @@ GROUP BY `teachers`.`surname`, `teachers`.`name`
 ORDER BY `teachers`.`surname` ASC, `teachers`.`name`;
 
 7)
+SELECT `students`.`surname`, `students`.`name`, `courses`.`name` AS `nome_appello`, COUNT(`exam_student`.`exam_id`) AS `totale_appelli_sostenuti`
+FROM `students`
+INNER JOIN `exam_student`
+ON `students`.`id` = `exam_student`.`student_id`
+INNER JOIN `exams`
+ON `exam_student`.`exam_id` = `exams`.`id`
+iNNER JOIN `courses`
+ON `exams`.`course_id` = `courses`.`id`
+GROUP BY `students`.`surname`, `students`.`name`, `nome_appello`;
