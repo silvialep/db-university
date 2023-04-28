@@ -6,3 +6,35 @@ ON `students`.`degree_id` = `degrees`.`id`
 WHERE `degrees`.`name` = 'Corso di Laurea in Economia';
 
 2)
+SELECT `degrees`.`name`, `departments`.`name` AS `nome_dipartimento`
+FROM `degrees`
+INNER JOIN `departments`
+ON `degrees`.`department_id` = `departments`.`id`
+WHERE `degrees`.`level` = 'magistrale'
+AND `departments`.`name` = 'Dipartimento di Neuroscienze';
+
+3)
+
+
+
+4)
+SELECT `students`.`surname`, `students`.`name`, `degrees`.`name` AS `degree_name`, `departments`.`name` AS `department_name`
+FROM `students`
+INNER JOIN `degrees`
+ON `students`.`degree_id` = `degrees`.`id`
+INNER JOIN `departments`
+ON `degrees`.`department_id` = `departments`.`id`  
+ORDER BY `students`.`surname` ASC, `students`.`name`;
+
+5)
+SELECT `degrees`.`name` AS `corso_di_laurea`, `courses`.`name` AS `nome_insegnamento`, `teachers`.`surname` AS `cognome_insegnante`, `teachers`.`name` AS `nome_insegnante`
+FROM `degrees`
+INNER JOIN `courses`
+ON `degrees`.`id` = `courses`.`degree_id`
+INNER JOIN `course_teacher`
+ON `courses`.`id` = `course_teacher`.`course_id`
+INNER JOIN `teachers`
+ON `course_teacher`.`teacher_id` = `teachers`.`id`  
+ORDER BY `corso_di_laurea` ASC, `cognome_insegnante`;
+
+6)
