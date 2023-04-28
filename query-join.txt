@@ -14,7 +14,7 @@ WHERE `degrees`.`level` = 'magistrale'
 AND `departments`.`name` = 'Dipartimento di Neuroscienze';
 
 3)
-SELECT `teachers`.`surname`, `teachers`.`name`, `courses`.`name` AS `nome_corso`
+SELECT `teachers`.`surname`, `teachers`.`name`, `courses`.`name` AS `nome_corso`, `courses`.`id`
 FROM `teachers`
 INNER JOIN `course_teacher`
 ON `teachers`.`id` = `course_teacher`.`teacher_id`
@@ -43,7 +43,7 @@ ON `course_teacher`.`teacher_id` = `teachers`.`id`
 ORDER BY `corso_di_laurea` ASC, `cognome_insegnante`;
 
 6)
-SELECT /*COUNT(`courses`.`id`) AS `totale_insegnamenti`,*/ `teachers`.`surname`, `teachers`.`name`, `departments`.`name` AS `nome_dipartimento`
+SELECT `teachers`.`surname`, `teachers`.`name`, `departments`.`name` AS `nome_dipartimento`
 FROM `teachers`
 INNER JOIN `course_teacher`
 ON `teachers`.`id` = `course_teacher`.`teacher_id`
@@ -54,8 +54,7 @@ ON `courses`.`degree_id` = `degrees`.`id`
 INNER JOIN `departments`
 ON `degrees`.`department_id` = `departments`.`id`
 WHERE `departments`.`name` = 'Dipartimento di Matematica' 
+GROUP BY `teachers`.`surname`, `teachers`.`name`
 ORDER BY `teachers`.`surname` ASC, `teachers`.`name`;
-
-/*non riesco a eliminare i docenti duplicati*/
 
 7)
